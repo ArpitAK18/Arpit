@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+<style>
+  body { text-align:center; font-family:Arial; }
+  input { width:200px; height:40px; font-size:20px; }
+  button { width:50px; height:50px; font-size:18px; }
+</style>
+</head>
+<body>
+
+<h2>Calculator</h2>
+<input type="text" id="screen"><br><br>
+
+<div id="buttons"></div>
+
+<script>
+const screen = document.getElementById("screen");
+const buttons = "789/456*123-0.=+".split("");
+
+buttons.forEach(b => {
+  const btn = document.createElement("button");
+  btn.innerText = b;
+  btn.onclick = () => {
+    if(b === "=") screen.value = eval(screen.value);
+    else if(b === ".") screen.value = "";
+    else screen.value += b;
+  };
+  document.getElementById("buttons").appendChild(btn);
+});
+</script>
+
+</body>
+</html>
